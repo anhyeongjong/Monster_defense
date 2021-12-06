@@ -8,6 +8,12 @@ public class GameManager : MonoBehaviour
     public Gun_info Gi;
     public static GameManager instance;   //변수 선언부// 
     public Player_controller Pc;
+    public int wave;
+    public bool isClear = false;
+    public GameObject mobParent;
+
+    private bool isGameOver = false;
+
     void Awake()
     {
         GameManager.instance = this;  //변수 초기화부 // 
@@ -24,6 +30,9 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        if (mobParent.transform.childCount == 0)
+        {
+            isClear = true;
+        }
     }
 }
