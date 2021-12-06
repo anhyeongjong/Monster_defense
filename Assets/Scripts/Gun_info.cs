@@ -9,6 +9,7 @@ public class Gun_info : MonoBehaviour
     float coolTime;
     int ammo;
     int now_Ammo;
+    int now_Gun;
     // Start is called before the first frame update
     void Start()
     {
@@ -23,27 +24,33 @@ public class Gun_info : MonoBehaviour
     {
         if (gun_num == 0)
         {
+            now_Gun = 0;
             Damage = 5;
-            shot_Delay = 0.13f;
+            shot_Delay = 0.3f;
             coolTime = 0f;
             ammo = -1;
             now_Ammo = ammo;
+            //GameManager.instance.Bullet_speed = 
         }
         else if (gun_num == 1)
         {
+            now_Gun = 1;
             Damage = 25;
             shot_Delay = 1.0f;
             coolTime = 5f;
             ammo = 5;
             now_Ammo = ammo;
+            //GameManager.instance.Bullet_speed =
         }
         else if (gun_num == 2)
         {
+            now_Gun = 2;
             Damage = 100;
             shot_Delay = 2.0f;
             coolTime = 10f;
             ammo = 1;
             now_Ammo = ammo;
+            //GameManager.instance.Bullet_speed =
         }
     }
     public float get_shot_Delay()
@@ -69,6 +76,25 @@ public class Gun_info : MonoBehaviour
     }
     public void shot()
     {
+        if(now_Gun == 1 )
+        {
+            for (int i = 1; i <= 20; i++)
+            {
+               Quaternion target = Quaternion.Euler(new Vector3(0, Random.Range(-45f,45f), 0));
+               GameObject temp = Instantiate(GameManager.instance.Bullet_prefab, GameManager.instance.FirePos.position, GameManager.instance.FirePos.rotation * target);
+               temp.name = "shotGunBullet";
+            }
+        }
+        if (now_Gun == 2)
+        {
+            GameObject temp = Instantiate(GameManager.instance.Bullet_prefab, GameManager.instance.FirePos.position, GameManager.instance.FirePos.rotation);
+            temp.name = "sniperBullet";
+        }
+        else
+        {
+            GameObject temp = Instantiate(GameManager.instance.Bullet_prefab, GameManager.instance.FirePos.position, GameManager.instance.FirePos.rotation);
+        }
+
         if (ammo == -1)
             return;
         now_Ammo--;

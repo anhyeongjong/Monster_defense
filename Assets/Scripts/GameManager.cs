@@ -12,6 +12,10 @@ public class GameManager : MonoBehaviour
     public bool isClear = false;
     public GameObject mobParent;
 
+    public GameObject Bullet_prefab;
+    public Transform FirePos;
+
+    public float Bullet_speed;
     private bool isGameOver = false;
 
     void Awake()
