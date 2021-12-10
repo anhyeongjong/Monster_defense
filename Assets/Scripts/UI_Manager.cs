@@ -9,6 +9,8 @@ public class UI_Manager : MonoBehaviour
     public GameObject Hp_Prefab;
     public GameObject Hp_UI;
     private Text Ammo_UI;
+
+    public GameObject GameOver;
     // Start is called before the first frame update
     void Start()
     {
@@ -40,7 +42,23 @@ public class UI_Manager : MonoBehaviour
         for (int i = 1; i <= 9;i++)
         {
             Hp_UI.transform.GetChild(i).gameObject.SetActive(true);
-            yield return new WaitForSeconds(0.2f);
+            yield return new WaitForSeconds(0.01f);
         }
+    }
+
+    public void remove_Hp()
+    {
+        Debug.Log(Hp_UI.transform.childCount);
+        if (Hp_UI.transform.childCount == 0)
+        {
+            GameOver.SetActive(true);
+            Time.timeScale = 0;
+        }
+        else
+        {
+            Destroy(Hp_UI.transform.GetChild(Hp_UI.transform.childCount - 1).gameObject);
+            Debug.Log("현재 체력 " + (Hp_UI.transform.childCount-1) + "남음");
+        }
+
     }
 }

@@ -19,6 +19,7 @@ public class Monster_Info : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        //Debug.Log("in");
         if(other.tag == "Bullet")
         {
             if(other.name =="sniperBullet")
@@ -41,6 +42,11 @@ public class Monster_Info : MonoBehaviour
                 Debug.Log(gameObject.name + "의 체력이 " + MonsterHp + " 만큼 남음");
             }
 
+        }
+        if(other.name == "[CameraRig]")
+        {
+            GameManager.instance.UM.remove_Hp();
+            Destroy(gameObject,0.1f);
         }
 
     }
