@@ -11,14 +11,21 @@ public class Player_controller : MonoBehaviour
     // 컨트롤러 버튼 타입
     public SteamVR_Action_Boolean function_Key;
 
+    [HideInInspector]
     private bool is_shot_Ready = true;
-    private bool is_shotgun_Ready = true;
-    private bool is_sniper_Ready = true;
+    [HideInInspector]
+    public bool is_shotgun_Ready = true;
+    [HideInInspector]
+    public bool is_sniper_Ready = true;
     private bool is_nowgun_Read;
+
+    public Coroutine shotgun,sniper;
     void Start()
     {
         right_Hand = SteamVR_Input_Sources.RightHand;
         left_Hand = SteamVR_Input_Sources.LeftHand;
+        shotgun = StartCoroutine(Demo());
+        sniper  = StartCoroutine(Demo());
     }
 
     void Update()
@@ -35,11 +42,13 @@ public class Player_controller : MonoBehaviour
             {
                 if (GameManager.instance.Gc.get_now_gunNum() == 1)
                 {
-                    StartCoroutine(shotgun_coolTime());
+                    StopCoroutine(shotgun);
+                    shotgun = StartCoroutine(shotgun_coolTime());
                 }
                 else if (GameManager.instance.Gc.get_now_gunNum() == 2)
                 {
-                    StartCoroutine(sniper_coolTime());
+                    StopCoroutine(sniper);
+                    sniper = StartCoroutine(sniper_coolTime());
                 }
             }
             Debug.Log("shot");
@@ -61,11 +70,13 @@ public class Player_controller : MonoBehaviour
         {
             if (GameManager.instance.Gc.get_now_gunNum() == 1)
             {
-                StartCoroutine(shotgun_coolTime());
+                StopCoroutine(shotgun);
+                shotgun = StartCoroutine(shotgun_coolTime());
             }
             else if (GameManager.instance.Gc.get_now_gunNum() == 2)
             {
-                StartCoroutine(sniper_coolTime());
+                StopCoroutine(sniper);
+                sniper = StartCoroutine(sniper_coolTime());
             }
             // 총(스킬) 체인지
             GameManager.instance.Gc.change_Gun();
@@ -86,6 +97,7 @@ public class Player_controller : MonoBehaviour
         is_shotgun_Ready = false;
         yield return new WaitForSecondsRealtime(GameManager.instance.Gi.get_coolTime());
 
+        if(GameManager.instance.Gc.get_now_gunNum() ==1)
         GameManager.instance.Gi.reload();
         Debug.Log("샷건 쿨타임 끝");
         is_shotgun_Ready = true;
@@ -95,10 +107,14 @@ public class Player_controller : MonoBehaviour
         Debug.Log("스나이퍼 쿨타임 시작");
         is_sniper_Ready = false;
         yield return new WaitForSecondsRealtime(GameManager.instance.Gi.get_coolTime());
-
-        GameManager.instance.Gi.reload();
+        if (GameManager.instance.Gc.get_now_gunNum() == 2)
+            GameManager.instance.Gi.reload();
         Debug.Log("스나이퍼 쿨타임 끝");
         is_sniper_Ready = true;
+    }
+    IEnumerator Demo()
+    {
+        yield return new WaitForSeconds(100000f);
     }
 
 }

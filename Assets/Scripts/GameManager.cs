@@ -4,10 +4,19 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+    [HideInInspector]
     public Gun_change Gc;
+    [HideInInspector]
     public Gun_info Gi;
+    [HideInInspector]
     public static GameManager instance;   //변수 선언부// 
+    [HideInInspector]
     public Player_controller Pc;
+    [HideInInspector]
+    public UI_Manager UM;
+    [HideInInspector]
+    public WeaponUpGrade WUG;
+
     public int wave;
     public bool isClear = false;
     public GameObject mobParent;
@@ -29,6 +38,8 @@ public class GameManager : MonoBehaviour
         Gc = GetComponent<Gun_change>();
         Gi = GetComponent<Gun_info>();
         Pc = GetComponent<Player_controller>();
+        UM = GetComponent<UI_Manager>();
+        WUG = GetComponent<WeaponUpGrade>();
     }
 
     // Update is called once per frame

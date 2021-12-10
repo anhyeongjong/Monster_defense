@@ -4,15 +4,17 @@ using UnityEngine;
 
 public class Gun_info : MonoBehaviour
 {
-    int Damage;
-    float shot_Delay;
-    float coolTime;
-    int ammo;
-    int now_Ammo;
-    int now_Gun;
+    int Damage = 5;
+    float shot_Delay = 0.3f;
+    float coolTime = 0f;
+    int ammo= 1;
+    int now_Ammo = 1;
+    int now_Gun =0;
+
     // Start is called before the first frame update
     void Start()
     {
+
     }
 
     // Update is called once per frame
@@ -28,7 +30,7 @@ public class Gun_info : MonoBehaviour
             Damage = 5;
             shot_Delay = 0.3f;
             coolTime = 0f;
-            ammo = -1;
+            ammo = 1;
             now_Ammo = ammo;
             //GameManager.instance.Bullet_speed = 
         }
@@ -40,6 +42,10 @@ public class Gun_info : MonoBehaviour
             coolTime = 5f;
             ammo = 5;
             now_Ammo = ammo;
+            if(!GameManager.instance.Pc.is_shotgun_Ready)
+            {
+                now_Ammo = 0;
+            }
             //GameManager.instance.Bullet_speed =
         }
         else if (gun_num == 2)
@@ -50,8 +56,13 @@ public class Gun_info : MonoBehaviour
             coolTime = 10f;
             ammo = 1;
             now_Ammo = ammo;
+            if (!GameManager.instance.Pc.is_sniper_Ready)
+            {
+                now_Ammo = 0;
+            }
             //GameManager.instance.Bullet_speed =
         }
+        GameManager.instance.UM.SetAmmoUi();
     }
     public float get_shot_Delay()
     {
@@ -95,15 +106,24 @@ public class Gun_info : MonoBehaviour
             GameObject temp = Instantiate(GameManager.instance.Bullet_prefab, GameManager.instance.FirePos.position, GameManager.instance.FirePos.rotation);
         }
 
-        if (ammo == -1)
-            return;
+        if (now_Gun == 0)
+        return;
+
+
         now_Ammo--;
+        GameManager.instance.UM.SetAmmoUi();
     }
     public void reload()
     {
-        if (ammo == -1)
+        if (now_Gun ==0)
             return;
         now_Ammo = ammo;
+        GameManager.instance.UM.SetAmmoUi();
+    }
+
+    public float Get_Gun_Damage()
+    {
+        return Damage * GameManager.instance.WUG.Get_Change_damage_Coefficient();
     }
 
 }
