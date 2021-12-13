@@ -123,7 +123,7 @@ public class Gun_info : MonoBehaviour
 
     public float Get_Gun_Damage()
     {
-        return Damage * GameManager.instance.WUG.Get_Change_damage_Coefficient();
+        return Damage * GameManager.instance.stateUp.Get_Change_damage_Coefficient();
     }
 
 }

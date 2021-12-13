@@ -15,7 +15,9 @@ public class GameManager : MonoBehaviour
     [HideInInspector]
     public UI_Manager UM;
     [HideInInspector]
-    public WeaponUpGrade WUG;
+    public StateUpGrade stateUp;
+    [HideInInspector]
+    public Monster_wave Mw;
 
     public int wave;
     public bool isClear = false;
@@ -32,17 +34,15 @@ public class GameManager : MonoBehaviour
         GameManager.instance = this;  //변수 초기화부 // 
 
     }
-    // Start is called before the first frame update
     void Start()
     {
         Gc = GetComponent<Gun_change>();
         Gi = GetComponent<Gun_info>();
         Pc = GetComponent<Player_controller>();
         UM = GetComponent<UI_Manager>();
-        WUG = GetComponent<WeaponUpGrade>();
+        stateUp = GetComponent<StateUpGrade>();
+        Mw = GetComponent<Monster_wave>();
     }
-
-    // Update is called once per frame
     void Update()
     {
         if (mobParent.transform.childCount == 0)

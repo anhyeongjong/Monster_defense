@@ -70,8 +70,8 @@
     <Compile Include="Assets\Scripts\Monster_Info.cs" />
     <Compile Include="Assets\Scripts\Monster_wave.cs" />
     <Compile Include="Assets\Scripts\Player_controller.cs" />
+    <Compile Include="Assets\Scripts\StateUpGrade.cs" />
     <Compile Include="Assets\Scripts\UI_Manager.cs" />
-    <Compile Include="Assets\Scripts\WeaponUpGrade.cs" />
     <Compile Include="Assets\Scripts\zombie_Move.cs" />
     <Reference Include="UnityEngine">
       <HintPath>C:/Program Files/Unity/Hub/Editor/2019.4.12f1/Editor/Data/Managed/UnityEngine/UnityEngine.dll</HintPath>

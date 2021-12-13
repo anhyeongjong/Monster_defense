@@ -7,7 +7,7 @@ public class Monster_wave : MonoBehaviour
     public Transform spawnPoints;
     public GameObject[] monsterPrefabs;
     
-    bool isReady = false;
+    public bool isReady = false;
 
     void Start()
     {
@@ -21,16 +21,6 @@ public class Monster_wave : MonoBehaviour
             StartCoroutine(monsterSpawner());
             isReady = false;
             GameManager.instance.isClear = false;
-        }
-        if (GameManager.instance.isClear == true)   // 웨이브 끝나면 (강화창 띄우기 및 wave 증가)
-        {
-            // 강화창 띄우기
-
-
-            // wave 증가
-            //if (강화창 ok되면)
-            GameManager.instance.wave++;
-            isReady = true;
         }
     }
 
