@@ -5,7 +5,7 @@ using UnityEngine;
 public class Gun_info : MonoBehaviour
 {
     int Damage = 5;
-    float shot_Delay = 0.3f;
+    float shot_Delay = 0.2f;
     float coolTime = 0f;
     int ammo= 1;
     int now_Ammo = 1;
@@ -28,11 +28,11 @@ public class Gun_info : MonoBehaviour
         {
             now_Gun = 0;
             Damage = 5;
-            shot_Delay = 0.3f;
+            shot_Delay = 0.2f;
             coolTime = 0f;
             ammo = 1;
             now_Ammo = ammo;
-            //GameManager.instance.Bullet_speed = 
+            GameManager.instance.Bullet_speed = 60f;
         }
         else if (gun_num == 1)
         {
@@ -46,7 +46,7 @@ public class Gun_info : MonoBehaviour
             {
                 now_Ammo = 0;
             }
-            //GameManager.instance.Bullet_speed =
+            GameManager.instance.Bullet_speed = 50f;
         }
         else if (gun_num == 2)
         {
@@ -60,7 +60,7 @@ public class Gun_info : MonoBehaviour
             {
                 now_Ammo = 0;
             }
-            //GameManager.instance.Bullet_speed =
+            GameManager.instance.Bullet_speed = 70f;
         }
         GameManager.instance.UM.SetAmmoUi();
     }
@@ -89,9 +89,9 @@ public class Gun_info : MonoBehaviour
     {
         if(now_Gun == 1 )
         {
-            for (int i = 1; i <= 20; i++)
+            for (int i = 1; i <= 40; i++)
             {
-               Quaternion target = Quaternion.Euler(new Vector3(0, Random.Range(-45f,45f), 0));
+               Quaternion target = Quaternion.Euler(new Vector3(Random.Range(-5.5f, 5.5f), Random.Range(-5.5f,5.5f), 0f));
                GameObject temp = Instantiate(GameManager.instance.Bullet_prefab, GameManager.instance.FirePos.position, GameManager.instance.FirePos.rotation * target);
                temp.name = "shotGunBullet";
             }
@@ -99,6 +99,7 @@ public class Gun_info : MonoBehaviour
         if (now_Gun == 2)
         {
             GameObject temp = Instantiate(GameManager.instance.Bullet_prefab, GameManager.instance.FirePos.position, GameManager.instance.FirePos.rotation);
+            temp.transform.localScale = new Vector3(100f, 100f, 100f);
             temp.name = "sniperBullet";
         }
         else

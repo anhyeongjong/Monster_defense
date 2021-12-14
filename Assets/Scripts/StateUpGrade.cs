@@ -15,6 +15,7 @@ public class StateUpGrade : MonoBehaviour
     public GameObject Hp_UI;
     public GameObject GameOver;
     public GameObject State_UI;
+    public GameObject HpUiPivot;
 
     public SteamVR_Input_Sources handType;
     public SteamVR_Action_Boolean up;
@@ -26,6 +27,7 @@ public class StateUpGrade : MonoBehaviour
         index_Len = GameObject.Find("Game_Canvas").transform.Find("State").childCount;
         damage_Coefficient = 1;
         maxHP = 0;
+        defalut_SetHp();
     }
 
     // Update is called once per frame
@@ -67,21 +69,29 @@ public class StateUpGrade : MonoBehaviour
     {
         maxHP += 3;
 
-        defalut_SetHp();
+        Active_Hp();
         State_UI.SetActive(false);
     }
-    public void  defalut_SetHp()
+    public void  Active_Hp()
     {
         for (int i = 0; i <= Hp_UI.transform.childCount - 1; i++)
         {
             Destroy(Hp_UI.transform.GetChild(i).gameObject);
         }
-        for (int i = 0; i <= 9 + maxHP; i++)
-        {
-            Vector3 temp = new Vector3(8f * i, 0, 0);
-            GameObject temp1 = Instantiate(Hp_Prefab, Hp_Prefab.transform.position + temp, Hp_Prefab.transform.rotation, Hp_UI.transform);
-        }
+
     }
+    public void defalut_SetHp()
+    {
+        for (int i = 0; i <= 20; i++)
+        {
+            Vector3 temp = new Vector3(-8f * i, 0, 0);
+            Quaternion Quaternion_temp = Quaternion.Euler(new Vector3(0, 0, 0));
+            GameObject temp1 = Instantiate(Hp_Prefab, HpUiPivot.transform.position +new Vector3(20f,0f,0f) + temp, Quaternion_temp, Hp_UI.transform);
+            temp1.transform.localScale = new Vector3(0.1f, 0.1f, 0.1f);
+        }
+        //Hp_UI.transform.Translate(20f, 0f, 0f);
+    }
+     
     public void remove_Hp()
     {
         Debug.Log(Hp_UI.transform.childCount);

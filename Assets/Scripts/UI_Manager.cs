@@ -15,8 +15,8 @@ public class UI_Manager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Ammo_UI = GameObject.Find("VR_Canvas").transform.Find("Ammo_UI").GetComponent<Text>();
-        Ammo_UI.text = "총탄환/현재탄환 : 1/1";
+        Ammo_UI = GameObject.Find("VR_Canvas").transform.Find("Ammo_Pivot").transform.Find("Ammo_UI").GetComponent<Text>();
+        Ammo_UI.text = "1/1";
     }
 
     // Update is called once per frame
@@ -32,11 +32,11 @@ public class UI_Manager : MonoBehaviour
     }
     public void SetAmmoUi()
     {
-        Ammo_UI.text = "총탄환/현재탄환 : " + GameManager.instance.Gi.get_ammo()+"/" + GameManager.instance.Gi.get_now_Ammo();
+        Ammo_UI.text = GameManager.instance.Gi.get_ammo()+"/" + GameManager.instance.Gi.get_now_Ammo();
     }
     public void State_OK()
     {
-        GameManager.instance.stateUp.defalut_SetHp();
+        GameManager.instance.stateUp.Active_Hp();
         GameManager.instance.wave++;
         GameManager.instance.Mw.isReady = true;
         state_UI.SetActive(false);

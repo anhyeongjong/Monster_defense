@@ -7,12 +7,13 @@ public class Bullet : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        transform.rotation = transform.rotation * Quaternion.Euler(90, 0,0);
         Destroy(gameObject, 5f);
     }
 
     // Update is called once per frame
     void Update()
     {
-        transform.Translate(Vector3.forward * GameManager.instance.Bullet_speed*Time.deltaTime);
+        transform.Translate(Vector3.up * GameManager.instance.Bullet_speed*Time.deltaTime);
     }
 }

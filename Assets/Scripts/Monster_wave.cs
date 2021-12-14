@@ -11,7 +11,7 @@ public class Monster_wave : MonoBehaviour
 
     void Start()
     {
-        
+        StartCoroutine(monsterSpawner());
     }
 
     void Update()
@@ -26,11 +26,11 @@ public class Monster_wave : MonoBehaviour
 
     IEnumerator monsterSpawner()
     {
-        for (int i = 0; i < 1; i++)      // 소 웨이브
+        for (int i = 0; i < 3; i++)      // 소 웨이브
         {
             for (int j = 0; j < 15; j++) // 몹 생성 갯수
             {
-                Vector3 mobspawnPoint = spawnPoints.position + new Vector3(Random.Range(-3.0f, 3.0f), 0, Random.Range(-70.0f, 70.0f));
+                Vector3 mobspawnPoint = spawnPoints.position + new Vector3(Random.Range(-2.5f, 2.5f), 0, Random.Range(-3.0f, 3.0f));
                 Instantiate(monsterPrefabs[Mathf.Clamp((Random.Range(1,GameManager.instance.wave + 1) - 1), 0, 8)], mobspawnPoint, Quaternion.identity,
                     GameManager.instance.mobParent.transform);
                 yield return new WaitForSecondsRealtime(0.05f);
