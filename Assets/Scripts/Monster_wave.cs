@@ -11,7 +11,7 @@ public class Monster_wave : MonoBehaviour
 
     void Start()
     {
-        StartCoroutine(monsterSpawner());
+
     }
 
     void Update()

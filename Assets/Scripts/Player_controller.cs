@@ -36,8 +36,6 @@ public class Player_controller : MonoBehaviour
             // 총 발사
             StartCoroutine(shotDelay());
             GameManager.instance.Gi.shot();
-            Debug.Log(GameManager.instance.Gc.get_now_gunNum());
-            Debug.Log(GameManager.instance.Gi.get_now_Ammo());
             if (GameManager.instance.Gi.get_now_Ammo() == 0)
             {
                 if (GameManager.instance.Gc.get_now_gunNum() == 1)
@@ -51,7 +49,6 @@ public class Player_controller : MonoBehaviour
                     sniper = StartCoroutine(sniper_coolTime());
                 }
             }
-            Debug.Log("shot");
         }
         if (GameManager.instance.Gc.get_now_gunNum() == 1)
         {
