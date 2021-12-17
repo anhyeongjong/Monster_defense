@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using Valve.VR;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
+
 public class StateUpGrade : MonoBehaviour
 {
     // Start is called before the first frame update
@@ -14,7 +16,7 @@ public class StateUpGrade : MonoBehaviour
 
     public GameObject Hp_Prefab;
     public GameObject Hp_UI;
-    //public GameObject GameOver;
+    public GameObject GameOver;
     public GameObject State_UI;
     public GameObject HpUiPivot;
     
@@ -23,6 +25,7 @@ public class StateUpGrade : MonoBehaviour
     public SteamVR_Action_Boolean up;
     public SteamVR_Action_Boolean down;
     public SteamVR_Action_Boolean check;
+    public SteamVR_Action_Boolean reStart;
 
     void Start()
     {
@@ -34,17 +37,17 @@ public class StateUpGrade : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (GameManager.instance.isClear)
+        if (GameManager.instance.isClear && !GameManager.instance.isGameOver)
         {
             if (down.GetLastStateUp(handType) && index_Len > state_Index)
             {
                 state_Index++;
-                Debug.Log(state_Index);
+                //.Log(state_Index);
             }
             else if (up.GetLastStateUp(handType) && state_Index > 1)
             {
                 state_Index--;
-                Debug.Log(state_Index);
+                //Debug.Log(state_Index);
             }
             else if (check.GetLastStateUp(handType))
             {
@@ -65,7 +68,7 @@ public class StateUpGrade : MonoBehaviour
             {
                 state_Index = index_Len;
                 {
-                    Debug.Log(state_Index);
+                    //Debug.Log(state_Index);
                 }
             }
             if (compare_Index != state_Index)
@@ -91,10 +94,14 @@ public class StateUpGrade : MonoBehaviour
                 compare_Index = state_Index;
             }
         }
+        if(GameManager.instance.isGameOver && reStart.GetLastStateDown(SteamVR_Input_Sources.LeftHand))
+        {
+            SceneManager.LoadScene("Map_v2");
+        }
     }
     public void Upgrade_GUN()
     {
-        damage_Coefficient += 1f;
+        damage_Coefficient += 0.3f;
 
         State_UI.SetActive(false);
     }
@@ -108,7 +115,7 @@ public class StateUpGrade : MonoBehaviour
 
         Active_Hp();
         State_UI.SetActive(false);
-        Debug.Log("HP");
+        //Debug.Log("HP");
     }
     public void Active_Hp()
     {
@@ -126,17 +133,24 @@ public class StateUpGrade : MonoBehaviour
     }
     public void remove_Hp()
     {
-        Debug.Log(Hp_UI.transform.childCount);
+        //Debug.Log(Hp_UI.transform.childCount);
         if (Hp_UI.transform.childCount <= 1)
         {
             Destroy(Hp_UI.transform.GetChild(Hp_UI.transform.childCount - 1).gameObject);
-            //GameOver.SetActive(true);
-            Time.timeScale = 0;
+            GameManager.instance.isGameOver = true;
+            GameManager.instance.UM.state_UI.SetActive(false);
+            GameManager.instance.UM.wave_UI.SetActive(false);
+            foreach (var Mob in GameManager.instance.mobParent_ray)
+            {
+                Destroy(Mob);
+            }
+            GameOver.SetActive(true);
+            
         }
         else
         {
             Destroy(Hp_UI.transform.GetChild(Hp_UI.transform.childCount - 1).gameObject);
-            Debug.Log("현재 체력 " + (Hp_UI.transform.childCount - 1) + "남음");
+            //Debug.Log("현재 체력 " + (Hp_UI.transform.childCount - 1) + "남음");
         }
     }
 }

@@ -34,7 +34,9 @@ public class GameManager : MonoBehaviour
     public GameObject explosion_Effect;
 
     public bool isClear = false;
-    private bool isGameOver = false;
+    public bool isGameOver = false;
+
+    public List<GameObject> mobParent_ray = new List<GameObject>();
 
     void Awake()
     {
@@ -52,7 +54,7 @@ public class GameManager : MonoBehaviour
     }
     void Update()
     {
-        if (mobParent.transform.childCount == 0)
+        if (mobParent.transform.childCount == 0 && isGameOver ==false)
         {
             isClear = true;
         }

@@ -12,20 +12,22 @@ public class Monster_Info : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        MonsterHp = 20f+GameManager.instance.wave*20f;
         
         if (gameObject.tag == "Wolf")
         {
+            MonsterHp = 10f + GameManager.instance.wave * 20f;
             wolf_Ani = GetComponent<Animator>();
             wolf_Ani.SetTrigger("Wolf_Run");
         }
         else if (gameObject.tag == "Troll")
         {
+            MonsterHp = 20f + GameManager.instance.wave * 30f;
             troll_Ani = GetComponent<Animator>();
             troll_Ani.SetTrigger("Troll_Walk");
         }
         else if (gameObject.tag == "Zombie")
         {
+            MonsterHp = 20f + GameManager.instance.wave * 20f;
             Zombie_Ani = GetComponent<Animator>();
             Zombie_Ani.SetTrigger("Zombie_Run");
         }
@@ -61,7 +63,7 @@ public class Monster_Info : MonoBehaviour
 
             if (MonsterHp <= 0 && this.tag != "Plane")
             {
-                Debug.Log(gameObject.name + "사망");
+                //Debug.Log(gameObject.name + "사망");
                 if (gameObject.tag == "Wolf")
                 {
                     wolf_Ani.SetTrigger("Wolf_Die");
@@ -80,11 +82,11 @@ public class Monster_Info : MonoBehaviour
                 GetComponent<Collider>().enabled = false;
                 gameObject.GetComponent<zombie_Move>().Stop_Nav();
 
-                Debug.Log(MonsterHp.ToString());
+                //Debug.Log(MonsterHp.ToString());
             }
             else
             {
-                Debug.Log(gameObject.name + "의 체력이 " + MonsterHp + " 만큼 남음");
+                //Debug.Log(gameObject.name + "의 체력이 " + MonsterHp + " 만큼 남음");
             }
         }
     }

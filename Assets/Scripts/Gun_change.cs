@@ -6,13 +6,15 @@ public class Gun_change : MonoBehaviour
   
 
     int gun_Num = 0;
-
+    GameObject gun_Obj;
     public GameObject[] gun;
 
     void Start()
     {
-        //gun_Obj = GameObject.Find("Controller (right)").transform.Find("Model").GetComponent<MeshFilter>();
-        //gun_Obj.mesh = gun[0].mesh;
+        gun[0].SetActive(true);
+        gun_Obj = gun[0];
+
+
     }
 
     public void change_Gun()
@@ -22,7 +24,9 @@ public class Gun_change : MonoBehaviour
         {
             gun_Num = 0;
         }
-       // gun_Obj.mesh = gun[gun_Num].mesh;
+        gun_Obj.SetActive(false);
+        gun[gun_Num].SetActive(true);
+        gun_Obj = gun[gun_Num];
         GameManager.instance.Gi.gun_info_chage(gun_Num);
 
     }

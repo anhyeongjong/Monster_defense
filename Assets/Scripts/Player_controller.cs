@@ -79,7 +79,7 @@ public class Player_controller : MonoBehaviour
             }
             // 총(스킬) 체인지
             GameManager.instance.Gc.change_Gun();
-            Debug.Log("change");
+            //Debug.Log("change");
         }
     }
 
@@ -92,23 +92,23 @@ public class Player_controller : MonoBehaviour
 
     IEnumerator shotgun_coolTime()
     {
-        Debug.Log("샷건 쿨타임 시작");
+        //Debug.Log("샷건 쿨타임 시작");
         is_shotgun_Ready = false;
         yield return new WaitForSecondsRealtime(GameManager.instance.Gi.get_coolTime());
 
         if(GameManager.instance.Gc.get_now_gunNum() ==1)
         GameManager.instance.Gi.reload();
-        Debug.Log("샷건 쿨타임 끝");
+        //Debug.Log("샷건 쿨타임 끝");
         is_shotgun_Ready = true;
     }
     IEnumerator sniper_coolTime()
     {
-        Debug.Log("스나이퍼 쿨타임 시작");
+        //Debug.Log("스나이퍼 쿨타임 시작");
         is_sniper_Ready = false;
         yield return new WaitForSecondsRealtime(GameManager.instance.Gi.get_coolTime());
         if (GameManager.instance.Gc.get_now_gunNum() == 2)
             GameManager.instance.Gi.reload();
-        Debug.Log("스나이퍼 쿨타임 끝");
+        //Debug.Log("스나이퍼 쿨타임 끝");
         is_sniper_Ready = true;
     }
     IEnumerator Demo()

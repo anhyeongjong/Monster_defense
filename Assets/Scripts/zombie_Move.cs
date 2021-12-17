@@ -31,4 +31,8 @@ public class zombie_Move : MonoBehaviour
     {
         nav.isStopped = true;
     }
+    public void enabled_Nav()
+    {
+        nav.enabled = !nav.enabled;
+    }
 }
