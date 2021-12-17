@@ -8,6 +8,7 @@ public class Player_controller : MonoBehaviour
     private SteamVR_Input_Sources right_Hand;
     private SteamVR_Input_Sources left_Hand;
 
+
     // 컨트롤러 버튼 타입
     public SteamVR_Action_Boolean function_Key;
 
@@ -26,6 +27,7 @@ public class Player_controller : MonoBehaviour
         left_Hand = SteamVR_Input_Sources.LeftHand;
         shotgun = StartCoroutine(Demo());
         sniper  = StartCoroutine(Demo());
+
     }
 
     void Update()

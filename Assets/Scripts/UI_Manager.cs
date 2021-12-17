@@ -38,6 +38,7 @@ public class UI_Manager : MonoBehaviour
     {
         GameManager.instance.stateUp.Active_Hp();
         GameManager.instance.wave++;
+        GameManager.instance.NowWave_UI.text = "Wave : " + GameManager.instance.wave;
         GameManager.instance.Mw.isReady = true;
         state_UI.SetActive(false);
         wave_UI.SetActive(false);

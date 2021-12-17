@@ -12,7 +12,16 @@
       },
       "/actions/default" : {
          "chords" : [],
-         "haptics" : [],
+         "haptics" : [
+            {
+               "output" : "/actions/default/out/haptic",
+               "path" : "/user/hand/left/output/haptic"
+            },
+            {
+               "output" : "/actions/default/out/haptic",
+               "path" : "/user/hand/right/output/haptic"
+            }
+         ],
          "poses" : [
             {
                "output" : "none",
@@ -98,9 +107,6 @@
                   }
                },
                "mode" : "dpad",
-               "parameters" : {
-                  "sub_mode" : "click"
-               },
                "path" : "/user/hand/right/input/trackpad"
             },
             {

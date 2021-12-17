@@ -8,7 +8,7 @@ public class Monster_Info : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        MonsterHp = 10f;
+        MonsterHp = 20f+GameManager.instance.wave*20f;
     }
 
     // Update is called once per frame

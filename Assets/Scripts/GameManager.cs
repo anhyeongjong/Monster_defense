@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
@@ -18,6 +19,9 @@ public class GameManager : MonoBehaviour
     public StateUpGrade stateUp;
     [HideInInspector]
     public Monster_wave Mw;
+
+    public Text MobCount_UI;
+    public Text NowWave_UI;
 
     public int wave;
     public bool isClear = false;
@@ -49,5 +53,8 @@ public class GameManager : MonoBehaviour
         {
             isClear = true;
         }
+
+        MobCount_UI.text = "Mob : " + mobParent.transform.childCount;
+
     }
 }
