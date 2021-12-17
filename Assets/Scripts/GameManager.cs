@@ -24,13 +24,16 @@ public class GameManager : MonoBehaviour
     public Text NowWave_UI;
 
     public int wave;
-    public bool isClear = false;
-    public GameObject mobParent;
-
-    public GameObject Bullet_prefab;
-    public Transform FirePos;
 
     public float Bullet_speed;
+
+    public GameObject mobParent;
+    public GameObject default_Bullet_prefab;
+    public GameObject RPG_Bullet_prefab;
+    public Transform FirePos;
+    public GameObject explosion_Effect;
+
+    public bool isClear = false;
     private bool isGameOver = false;
 
     void Awake()

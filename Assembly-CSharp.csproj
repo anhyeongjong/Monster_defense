@@ -63,6 +63,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Fx Explosion Pack\Script\DestroyEffect.cs" />
+    <Compile Include="Assets\Fx Explosion Pack\Script\csDemoScenceControl.cs" />
+    <Compile Include="Assets\Fx Explosion Pack\Script\csLightControl.cs" />
+    <Compile Include="Assets\Fx Explosion Pack\Script\csMouseOrbit.cs" />
     <Compile Include="Assets\Low Poly FPS Pack - Free (Sample)\Components\Demo_Scene_Components\Scripts\DebrisScript.cs" />
     <Compile Include="Assets\Low Poly FPS Pack - Free (Sample)\Components\Demo_Scene_Components\Scripts\ExplosiveBarrelScript.cs" />
     <Compile Include="Assets\Low Poly FPS Pack - Free (Sample)\Components\Demo_Scene_Components\Scripts\TargetScript.cs" />
@@ -75,18 +79,21 @@
     <Compile Include="Assets\Low Poly FPS Pack - Free (Sample)\Components\Scripts\Misc\LookAtCamera.cs" />
     <Compile Include="Assets\Low Poly FPS Pack - Free (Sample)\Components\Scripts\Weapon_Scripts\AutomaticGunScriptLPFP.cs" />
     <Compile Include="Assets\Low Poly FPS Pack - Free (Sample)\Components\Scripts\Weapon_Scripts\HandgunScriptLPFP.cs" />
+    <Compile Include="Assets\Scripts\Ammo_info_Pivot.cs" />
     <Compile Include="Assets\Scripts\Bullet.cs" />
     <Compile Include="Assets\Scripts\GameManager.cs" />
+    <Compile Include="Assets\Scripts\Gun_Pivot.cs" />
     <Compile Include="Assets\Scripts\Gun_change.cs" />
     <Compile Include="Assets\Scripts\Gun_info.cs" />
     <Compile Include="Assets\Scripts\Monster_Info.cs" />
     <Compile Include="Assets\Scripts\Monster_wave.cs" />
     <Compile Include="Assets\Scripts\Player_controller.cs" />
     <Compile Include="Assets\Scripts\StateUpGrade.cs" />
-    <Compile Include="Assets\Scripts\Test.cs" />
-    <Compile Include="Assets\Scripts\Test2.cs" />
     <Compile Include="Assets\Scripts\UI_Manager.cs" />
     <Compile Include="Assets\Scripts\zombie_Move.cs" />
+    <Compile Include="Assets\cave_troll\scripts\camera_follow.cs" />
+    <None Include="Assets\Casual RPG Monster - 26 Wolf\readme.txt" />
+    <None Include="Assets\cave_troll\shaders\Standard Two Sided Soft Blend.shader" />
     <Reference Include="UnityEngine">
       <HintPath>C:/Program Files/Unity/Hub/Editor/2019.4.12f1/Editor/Data/Managed/UnityEngine/UnityEngine.dll</HintPath>
     </Reference>

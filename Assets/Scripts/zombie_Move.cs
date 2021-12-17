@@ -17,7 +17,7 @@ public class zombie_Move : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (nav.destination != target.transform.position)
+        if (nav.destination != target.transform.position && nav.isStopped == false)
         {
             nav.SetDestination(target.transform.position);
         }
@@ -25,5 +25,10 @@ public class zombie_Move : MonoBehaviour
         {
             nav.SetDestination(transform.position);
         }
+    }
+
+    public void Stop_Nav()
+    {
+        nav.isStopped = true;
     }
 }

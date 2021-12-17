@@ -103,21 +103,21 @@ public class Gun_info : MonoBehaviour
             for (int i = 1; i <= 40; i++)
             {
                Quaternion target = Quaternion.Euler(new Vector3(Random.Range(-5.5f, 5.5f), Random.Range(-5.5f,5.5f), 0f));
-               GameObject temp = Instantiate(GameManager.instance.Bullet_prefab, GameManager.instance.FirePos.position, GameManager.instance.FirePos.rotation * target);
+               GameObject temp = Instantiate(GameManager.instance.default_Bullet_prefab, GameManager.instance.FirePos.position, GameManager.instance.FirePos.rotation * target);
                temp.name = "shotGunBullet";
             }
         }
         if (now_Gun == 2)
         {
             shotHaptic(0.6f, 320f, 1f, SteamVR_Input_Sources.RightHand);
-            GameObject temp = Instantiate(GameManager.instance.Bullet_prefab, GameManager.instance.FirePos.position, GameManager.instance.FirePos.rotation);
-            temp.transform.localScale = new Vector3(100f, 100f, 100f);
+            GameObject temp = Instantiate(GameManager.instance.RPG_Bullet_prefab, GameManager.instance.FirePos.position, GameManager.instance.FirePos.rotation);
+            temp.transform.localScale = new Vector3(3f, 3f, 3f);
             temp.name = "sniperBullet";
         }
         else
         {
             shotHaptic(0.1f, 100f, 1f, SteamVR_Input_Sources.RightHand);
-            GameObject temp = Instantiate(GameManager.instance.Bullet_prefab, GameManager.instance.FirePos.position, GameManager.instance.FirePos.rotation);
+            GameObject temp = Instantiate(GameManager.instance.default_Bullet_prefab, GameManager.instance.FirePos.position, GameManager.instance.FirePos.rotation);
         }
 
         if (now_Gun == 0)
