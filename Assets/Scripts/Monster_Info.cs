@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Monster_Info : MonoBehaviour
 {
+    Animator Zombie_Ani;
     Animator wolf_Ani;
     Animator troll_Ani;
 
@@ -22,6 +23,11 @@ public class Monster_Info : MonoBehaviour
         {
             troll_Ani = GetComponent<Animator>();
             troll_Ani.SetTrigger("Troll_Walk");
+        }
+        else if (gameObject.tag == "Zombie")
+        {
+            Zombie_Ani = GetComponent<Animator>();
+            Zombie_Ani.SetTrigger("Zombie_Run");
         }
     }
 
@@ -65,6 +71,11 @@ public class Monster_Info : MonoBehaviour
                 {
                     troll_Ani.SetTrigger("Troll_Die");
                     Destroy(gameObject, 1.9f);
+                }
+                else if (gameObject.tag == "Zombie")
+                {
+                    Zombie_Ani.SetTrigger("Zombie_Die");
+                    Destroy(gameObject, 2.5f);
                 }
                 GetComponent<Collider>().enabled = false;
                 gameObject.GetComponent<zombie_Move>().Stop_Nav();
