@@ -74,8 +74,8 @@ public class Player_controller : MonoBehaviour
             }
             else if (GameManager.instance.Gc.get_now_gunNum() == 2)
             {
-                StopCoroutine(sniper);
-                sniper = StartCoroutine(sniper_coolTime());
+                /*StopCoroutine(sniper);
+                sniper = StartCoroutine(sniper_coolTime());*/
             }
             // 총(스킬) 체인지
             GameManager.instance.Gc.change_Gun();

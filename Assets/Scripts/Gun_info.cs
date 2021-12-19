@@ -7,6 +7,10 @@ public class Gun_info : MonoBehaviour
 {
     public SteamVR_Action_Vibration hapticAction;
 
+    public AudioClip rifleClip, shotgunClip;
+
+    public AudioSource GunSource;
+
     int Damage = 50;
     float shot_Delay = 0.2f;
     float coolTime = 0f;
@@ -23,7 +27,7 @@ public class Gun_info : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        //GunSource = GameObject.Find("[CameraRig]").transform.Find("Controller (right)").transform.Find("Model").GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -100,6 +104,7 @@ public class Gun_info : MonoBehaviour
         if (now_Gun == 1 )
         {
             shotHaptic(0.2f, 320f, 1f, SteamVR_Input_Sources.RightHand);
+            GunSource.PlayOneShot(shotgunClip);
             for (int i = 1; i <= 40; i++)
             {
                Quaternion target = Quaternion.Euler(new Vector3(Random.Range(-5.5f, 5.5f), Random.Range(-5.5f,5.5f), 0f));
@@ -116,6 +121,7 @@ public class Gun_info : MonoBehaviour
         }
         else
         {
+            GunSource.PlayOneShot(rifleClip);
             shotHaptic(0.1f, 100f, 1f, SteamVR_Input_Sources.RightHand);
             GameObject temp = Instantiate(GameManager.instance.default_Bullet_prefab, GameManager.instance.FirePos.position, GameManager.instance.FirePos.rotation);
         }
